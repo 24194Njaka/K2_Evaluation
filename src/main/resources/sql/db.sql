@@ -1,0 +1,21 @@
+CREATE USER hei_garage WITH PASSWORD 'garage1234';
+CREATE DATABASE garage;
+\c garage;
+
+
+
+GRANT CONNECT ON DATABASE postgres TO hei_garage;
+GRANT USAGE ON SCHEMA public TO  hei_garage;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE Modele_voiture TO hei_garage;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE Piece_auto TO hei_garage;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE Vente TO hei_garage;
+
+
+GRANT USAGE, SELECT ON SEQUENCE Modele_voiture_id_seq TO hei_garage;
+GRANT USAGE, SELECT ON SEQUENCE Piece_auto_id_seq TO hei_garage;
+GRANT USAGE, SELECT ON SEQUENCE Vente_id_seq TO hei_garage;
+
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO hei_garage;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO hei_garage;
